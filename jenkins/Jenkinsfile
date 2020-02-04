@@ -8,11 +8,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo "Inside Build"
                 sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
             steps {
+                echo "Inside Test"
                 sh 'mvn test'
             }
             post {
@@ -23,6 +25,7 @@ pipeline {
         }
         stage('Deliver') {
             steps {
+                echo "Inside Deliver"
                 sh './jenkins/scripts/deliver.sh'
             }
         }
